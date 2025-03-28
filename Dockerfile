@@ -20,6 +20,10 @@ WORKDIR /workspace
 # install system package ffmpeg
 RUN apt-get update && apt-get install -y ffmpeg
 
+# Copy and run setup script
+COPY builder/setup.sh /setup.sh
+RUN chmod +x /setup.sh && /setup.sh
+
 # Install Python Dependencies
 COPY builder/requirements.txt /requirements.txt
 RUN pip install --upgrade pip && \
