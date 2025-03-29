@@ -35,8 +35,12 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     libjpeg-dev \
     zlib1g-dev \
+    cmake \
+    ninja-build \
+    git \
     && rm -rf /var/lib/apt/lists/*
-
+    
+RUN pip install flash-attn --no-build-isolation
 # Install Python Dependencies
 COPY builder/requirements.txt /requirements.txt
 RUN pip install --upgrade pip && \
