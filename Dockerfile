@@ -40,7 +40,7 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
     
-RUN pip install flash-attn --no-build-isolation
+# RUN pip install flash-attn --no-build-isolation
 # Install Python Dependencies
 COPY builder/requirements.txt /requirements.txt
 RUN pip install --upgrade pip && \
