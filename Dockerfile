@@ -24,6 +24,19 @@ RUN apt-get update && apt-get install -y ffmpeg
 COPY builder/setup.sh /setup.sh
 RUN chmod +x /setup.sh && /setup.sh
 
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    build-essential \
+    python3-dev \
+    python3-pip \
+    python3-setuptools \
+    python3-wheel \
+    libffi-dev \
+    libssl-dev \
+    libjpeg-dev \
+    zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 # Install Python Dependencies
 COPY builder/requirements.txt /requirements.txt
 RUN pip install --upgrade pip && \
